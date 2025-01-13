@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1i4kv7mxv4vg"]
+
+[ext_resource type="FontFile" uid="uid://r5ttqaxnuvgk" path="res://assets/MaldiniBold.ttf" id="1_daktg"]
+[ext_resource type="Script" path="res://game_over_menu.gd" id="1_tpo0u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_meuvt"]
+bg_color = Color(0.120165, 0.419522, 0.518257, 1)
+shadow_size = 5
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mv2lr"]
+bg_color = Color(0.243311, 0.643056, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpam4"]
+bg_color = Color(0.0649403, 0.481112, 0.600252, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvd8m"]
+bg_color = Color(0.0685851, 0.487539, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(10, 10)
+
+[node name="Game Over Menu" type="CanvasLayer"]
+script = ExtResource("1_tpo0u")
+
+[node name="GameOverPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -125.0
+offset_right = 200.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_meuvt")
+
+[node name="ResultLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -87.0
+offset_right = 138.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_daktg")
+theme_override_font_sizes/font_size = 50
+text = "GAME OVER!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.535
+anchor_right = 0.497
+anchor_bottom = 0.535
+offset_left = -124.0
+offset_top = -33.75
+offset_right = 125.0
+offset_bottom = 33.25
+theme_override_fonts/font = ExtResource("1_daktg")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_mv2lr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kpam4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bvd8m")
+text = "Play Again?"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
